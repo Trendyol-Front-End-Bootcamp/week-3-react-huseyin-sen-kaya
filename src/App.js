@@ -1,24 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Header from "./components/ui/Header";
+import CharacterGrid from "./components/characters/CharacterGrid";
+import Search from "./components/ui/Search";
+import CharacterPage from './components/characters/CharacterPage';
 
-function App() {
+
+
+const App = () => {
+  const [chars, setChars] = useState([]);
+  const [apiUrl, setApiUrl] = useState(
+    "https://rickandmortyapi.com/api/character"
+  );
+  
+
+  useEffect( ()=> {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setChars(data.results));
+  },[apiUrl])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <Header/>
+        <Switch>
+
+          <Route exact path="/">
+            <Search setApiUrl={setApiUrl}/>
+            <CharacterGrid chars={chars} />
+          </Route>
+
+          <Route 
+            exact 
+            path="/:name"
+            render={(props) => (
+            <CharacterPage {...props} chars={chars} />
+            )}
+            ></Route>
+
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
