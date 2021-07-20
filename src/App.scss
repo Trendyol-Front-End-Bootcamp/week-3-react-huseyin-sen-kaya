@@ -1,0 +1,29 @@
+@import '/src/css/CharacterGrid';
+@import '/src/css/CharacterItem';
+@import '/src/css/CharacterPage';
+@import '/src/css/HomePage';
+@import '/src/css/Header';
+@import '/src/css/Search';
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,body {
+  background: url('img/bg.png');
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

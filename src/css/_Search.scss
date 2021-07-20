@@ -1,0 +1,42 @@
+.search{
+    color: white;
+    padding-left:5rem;
+    
+    h2{
+        margin-bottom: 10px;
+        font-size: 2rem;
+    }
+    
+    .form-box{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .form-input{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            input{
+                height: 25px;
+                padding-left: 5px;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+        .form-select-group {
+            display: flex;
+        }
+        .form-select{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            select{
+                height: 25px;
+            }
+            gap: 5px;
+            &:first-child{
+                margin-right: 5px;
+            }
+        }
+    }
+}
